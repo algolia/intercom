@@ -114,7 +114,7 @@ end
     '</div>';
   
     $('#input-user').typeahead({
-      remote: client.initIndex('intercom').getTypeaheadTransport({ hitsPerPage: 5 }),
+      remote: client.initIndex('YourIndexName').getTypeaheadTransport({ hitsPerPage: 5 }),
       engine: Hogan,
       template: template,
       valueKey: 'objectID'
