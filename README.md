@@ -20,5 +20,6 @@ Installation
 * ```git clone https://github.com/algolia/algoliasearch-rails-example.git```
 *  ```bundle install```
 *  Create your ```config/application.yml``` based on ```config/application.example.yml``` with your [Algolia](http://www.algolia.com) and [Intercom](http://www.intercom.io) credentials
+*  ```bundle exec rails runner User.reindex!```
 *  ```bundle exec rails server```
 *  Enjoy your ```http://localhost:3000``` examples!
