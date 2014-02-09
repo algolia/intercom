@@ -5,7 +5,7 @@ class User
   def self.reindex!
     records = []
     index = Algolia::Index.new ENV['ALGOLIA_INDEX']
-    index.set_settings attributesToIndex: ['name', 'email', 'social_profiles.username', 'location_data.city_name'],
+    index.set_settings attributesToIndex: ['name', 'email', 'social_profiles.username', 'location_data.city_name', 'location_data.country_name'],
       customRanking: ['desc(session_count)'],
       queryType: 'prefixAll'
     Intercom::User.all.each do |user|
