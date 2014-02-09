@@ -15,6 +15,7 @@ gem 'thin'
 gem 'intercom'
 gem 'algoliasearch-rails'
 gem 'hogan_assets'
+gem 'whenever', :require => false
 
 group :development do
   gem 'better_errors'
