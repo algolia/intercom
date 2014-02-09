@@ -3,8 +3,7 @@ Intercom User Search
 
 This is a Rails 4 application iframing [Intercom.io](http://www.intercom.io) and providing a _working_ users search on top of it.
 
-![Capture](ca
-pture.png)
+![Capture](capture.png)
 
 Dependencies
 ------------
