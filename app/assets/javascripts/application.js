@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require_tree .
+//= require algolia/algoliasearch.min
+//= require algolia/typeahead.min
+//= require hogan

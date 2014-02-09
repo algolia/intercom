@@ -1,0 +1,64 @@
+%header#header
+  #search-box
+    .form-horizontal
+      .form-group.has-feedback
+        %input.form-control#input-user{type: 'text', placeholder: 'Search for users'}
+        %span.glyphicon.glyphicon-search.form-control-feedback
+        .powered-by.text-right
+          powered by
+          = image_tag "http://www.algolia.com/assets/algolia_white.png"
+%section#main
+  %iframe#iframe{src: "https://www.intercom.io"}
+
+:javascript
+  $(document).ready(function() {
+    var client = new AlgoliaSearch('#{ENV['ALGOLIA_APPLICATION_ID']}', '#{ENV['ALGOLIA_SEARCH_ONLY_API_KEY']}');
+
+    var template = '<div class="hit">' +
+      '{{#avatar_url}}' +
+        '<img class="avatar" src="{{avatar_url}}" />' +
+      '{{/avatar_url}}' +
+      '<div class="infos">' +
+        '<span class="secondary">' +
+          '{{#_highlightResult.name}}' +
+            '{{{_highlightResult.email.value}}}' +
+          '{{/_highlightResult.name}}' +
+          '{{^_highlightResult.name}}' +
+            '{{{_highlightResult.name.value}}}' +
+          '{{/_highlightResult.name}}' +
+        '</span>' +
+        '<span class="session_count">Session count: {{{session_count}}}</span>' +
+        '{{#_highlightResult.location_data}}' +
+          '<span class="location_data">{{{_highlightResult.location_data.city_name.value}}} ({{{_highlightResult.location_data.country_name.value}}})</span>' +
+        '{{/_highlightResult.location_data}}' +
+      '</div>' +
+      '<div class="middle">' +
+        '<span class="primary">' +
+          '{{#_highlightResult.name}}' +
+            '{{{_highlightResult.name.value}}}' +
+          '{{/_highlightResult.name}}' +
+          '{{^_highlightResult.name}}' +
+            '{{{_highlightResult.email.value}}}' +
+          '{{/_highlightResult.name}}' +
+        '</span>' +
+        '<ul>{{#_highlightResult.social_profiles}}' +
+            '{{#username.matchedWords}}' + 
+              '<li class="social_profile">{{{type.value}}}: {{{username.value}}}</li>' +
+            '{{/username.matchedWords}}' +
+        '{{/_highlightResult.social_profiles}}</ul>' +
+      '</div>' +
+      '<div class="clearfix"></div>' +
+    '</div>';
+
+    $('#input-user').typeahead({
+      remote: client.initIndex('#{ENV['ALGOLIA_INDEX']}').getTypeaheadTransport({ hitsPerPage: 5 }),
+      engine: Hogan,
+      template: template,
+      valueKey: 'objectID'
+    }).on('typeahead:selected', function() {
+      var intercom_id = $(this).val();
+      $('#iframe').attr('src', 'https://www.intercom.io/apps/#{ENV['INTERCOM_APP_ID']}/users/' + intercom_id);
+      $(this).val('');
+      $(this).typeahead('setQuery', '');
+    });
+  });

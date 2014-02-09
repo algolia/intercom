@@ -11,3 +11,144 @@
  *= require_self
  *= require_tree .
  */
+
+html, body {
+  height: 100%;
+}
+
+#header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 80px;
+  background: #0073B0;
+  color: white;
+
+  #search-box {
+    width: 40%;
+    margin: 20px auto 0px auto;
+    color: #282f33;
+
+    .powered-by {
+      font-size: 10px;
+      color: white;
+
+      img {
+        height: 16px;
+      }
+    }
+  }
+}
+
+#main {
+  border-top: 2px solid white;
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding: 0px;
+
+  iframe {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+.twitter-typeahead {
+    width: 100%;
+    position: relative;
+}
+
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+    margin-bottom: 0;
+    width: 100%;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.twitter-typeahead .tt-hint {
+    color: #a1a1a1;
+    z-index: 1;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+}
+
+.twitter-typeahead .tt-query {
+    z-index: 2;
+}
+
+.tt-dropdown-menu {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .2);
+    *border-right-width: 2px;
+    *border-bottom-width: 2px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}
+
+.tt-suggestion {
+  display: block;
+
+  em {
+    font-style: normal;
+    font-weight: bold;
+    color: #1D52E1 !important;
+  }
+
+  .hit {
+    padding: 10px;
+    border-bottom: 1px solid #efefef;
+
+    ul {
+      margin-bottom: 0px;
+    }
+
+    .infos {
+      float: right;      
+    }
+
+    .avatar {
+      display: block;
+      float: left;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    .secondary, .session_count, .location_data {
+      display: block;
+      color: #636d74;
+      text-align: right;
+      font-size: 0.8em;
+    }
+
+    .primary {
+      font-size: 1.2em;
+    }
+
+    .middle {
+      float: left;
+    }
+
+    .social_profile {
+      font-size: 0.8em;
+      color: #636d74;
+    }
+  }
+}
+
+.tt-suggestion.tt-is-under-cursor {
+  background: #E9EEF2;
+}
