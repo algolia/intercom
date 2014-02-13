@@ -1,3 +1,11 @@
+***********************************
+
+NOT WORKING SINCE 2014/02/12
+==============================
+Intercom.io now sets the X-Frame-Origin header avoiding the website to be displayed in an iframe.
+
+***********************************
+
 Intercom User Search
 =====================
 
