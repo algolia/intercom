@@ -8,6 +8,7 @@ class User
     index.set_settings attributesToIndex: ['name', 'email', 'social_profiles.username', 'location_data.city_name', 'location_data.country_name'],
       customRanking: ['desc(session_count)'],
       queryType: 'prefixAll'
+    index.clear
     Intercom::User.all.each do |user|
       record = user.to_hash
       record['objectID'] = record.delete('intercom_id')
