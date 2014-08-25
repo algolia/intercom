@@ -4,7 +4,7 @@ class User
 
   def self.reindex!
     records = []
-    index = Algolia::Index.new ENV['ALGOLIA_INDEX']
+    index = Algolia::Index.new("#{ENV['ALGOLIA_INDEX']}.tmp")
     index.set_settings attributesToIndex: ['name', 'email', 'social_profiles.username', 'location_data.city_name', 'location_data.country_name'],
       customRanking: ['desc(session_count)'],
       queryType: 'prefixAll'
@@ -21,6 +21,7 @@ class User
       end
     end
     index.add_objects records unless records.empty?
+    Algolia.move_index index.name, ENV['ALGOLIA_INDEX']
   end
 
 end
